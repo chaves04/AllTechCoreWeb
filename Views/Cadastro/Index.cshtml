@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AllTechCoreWeb.Models.Cadastro>
+@{
+    ViewData[ "Title" ] = "Cadastro";
+}
+
+<h1>Cadastro</h1>
+<div class="row mt-5 text-right">
+    <div class="col-md-12">
+        <a href="@Url.Action( "novo", "Cadastro")" class="btn btn-warning"><i class="fa fa-plus" aria-hidden="true"></i> novo cadastro</a>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-md-12">
+
+
+        <table class="table bg-white">
+            <thead class="bg-secondary text-white">
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ( var itm in Model )
+                {
+                    <tr>
+                        <td>@itm.ID</td>
+                        <td>@itm.Nome</td>
+                        <td>@itm.Email</td>
+                        <td class="text-center"><a href="@Url.Action( "editar", "Cadastro", new { id = itm.ID } )" class="text-secondary"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a></td>
+                        <td class="text-center"><a href="@Url.Action( "excluir", "Cadastro", new { id = itm.ID } )" onclick="return confirm('Deseja excluir o nome @itm.Nome?');" class="text-danger"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

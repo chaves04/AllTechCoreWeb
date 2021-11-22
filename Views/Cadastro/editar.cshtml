@@ -1,0 +1,41 @@
+﻿@model AllTechCoreWeb.Models.Cadastro
+@{
+    ViewData[ "Title" ] = "Editar cadastro";
+}
+
+<h1>Editar Cadastro</h1>
+
+<div class="row mt-4">
+    <div class="col-md-12 text-right">
+        <a href="@Url.Action( "Index", "Cadastro" )" class="text-secondary"><i class="fa fa-table" aria-hidden="true"></i> Listar Cadastro</a>
+    </div>
+</div>
+
+@using ( Html.BeginForm() )
+{
+    @Html.HiddenFor( m => m.ID )
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor( m => m.Nome )
+                @Html.TextBoxFor( m => m.Nome, new { @class = "form-control", autocomplete = "off" } )
+                @Html.ValidationMessageFor( m => m.Nome )
+            </div>
+        </div>
+    </div>
+    <div class="row mt-1">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor( m => m.Email )
+                @Html.TextBoxFor( m => m.Email, new { @class = "form-control", autocomplete = "off", @type = "email" } )
+                @Html.ValidationMessageFor( m => m.Email )
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-warning">Salvar</button>
+        </div>
+    </div>
+}
